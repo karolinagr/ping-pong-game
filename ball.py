@@ -1,37 +1,67 @@
+# from turtle import Turtle
+#
+#
+# class Ball(Turtle):
+#     """Create ball and their attributes."""
+#
+#     def __init__(self):
+#         # Create ball.
+#         super().__init__()
+#         self.shape("circle")
+#         self.shapesize(stretch_wid=1, stretch_len=1)
+#         self.color("#0019D2")
+#         self.penup()
+#         self.move_speed = 0.1
+#         self.x_move = 10
+#         self.y_move = 10
+#
+#     def move(self):
+#         # Create the way how ball moves.
+#         x = self.xcor() + self.x_move
+#         y = self.ycor() + self.y_move
+#         self.goto(x, y)
+#
+#     def bounce(self):
+#         # Change ball behave after collision with wall.
+#         self.y_move *= -1
+#
+#     def bounce_paddle(self):
+#         # Change ball behave after collision with paddle.
+#         self.x_move *= -1
+#         self.move_speed *= 0.9
+#
+#     def reset_position(self):
+#         # Reset ball position when it misses.
+#         self.goto(0, 0)
+#         self.move_speed = 0.1
+#         self.bounce_paddle()
+
+
 from turtle import Turtle
+from ball_logic import BallLogic
 
 
 class Ball(Turtle):
-    """Create ball and their attributes."""
+    """Graphical representation of the ball using turtle."""
 
     def __init__(self):
-        # Create ball.
         super().__init__()
         self.shape("circle")
         self.shapesize(stretch_wid=1, stretch_len=1)
         self.color("#0019D2")
         self.penup()
-        self.move_speed = 0.1
-        self.x_move = 10
-        self.y_move = 10
+        self.logic = BallLogic()   # logika ruchu
 
     def move(self):
-        # Create the way how ball moves.
-        x = self.xcor() + self.x_move
-        y = self.ycor() + self.y_move
-        self.goto(x, y)
+        self.logic.move()
+        self.goto(self.logic.x, self.logic.y)
 
     def bounce(self):
-        # Change ball behave after collision with wall.
-        self.y_move *= -1
+        self.logic.bounce()
 
     def bounce_paddle(self):
-        # Change ball behave after collision with paddle.
-        self.x_move *= -1
-        self.move_speed *= 0.9
+        self.logic.bounce_paddle()
 
     def reset_position(self):
-        # Reset ball position when it misses.
-        self.goto(0, 0)
-        self.move_speed = 0.1
-        self.bounce_paddle()
+        self.logic.reset_position()
+        self.goto(self.logic.x, self.logic.y)
