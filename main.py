@@ -1,5 +1,6 @@
 from turtle import Screen
 from paddle import Paddle
+from ball_logic import BallLogic
 from ball import Ball
 import time
 from scoreboard import Scoreboard
@@ -32,7 +33,7 @@ screen.onkeypress(l_paddle.down, "s")
 game_on = True
 
 while game_on:
-    time.sleep(ball.move_speed)
+    time.sleep(BallLogic().move_speed)
     ball.move()
     screen.update()
     # Detect collision with wall.
