@@ -6,21 +6,21 @@ from scoreboard import Scoreboard
 
 # Set screen attributes.
 screen = Screen()
-screen.bgcolor("black")
+screen.bgcolor("#090B1E")
 screen.setup(width=800, height=600)
-screen.title("Pong")
+screen.title("Ping Pong")
 screen.tracer(0)
 
-# Create right paddles.
-r_paddle = Paddle((370, 0))
-l_paddle = Paddle((-370, 0))
+# Create paddles.
+r_paddle = Paddle((375, 0))
+l_paddle = Paddle((-380, 0), color="#F5B100")
 
 # Create ball.
 ball = Ball()
 
 # Create scoreboard of each player.
-l_scoreboard = Scoreboard(-200, 260)
 r_scoreboard = Scoreboard(200, 260)
+l_scoreboard = Scoreboard(-200, 260, color="#F5B100")
 
 screen.listen()
 screen.onkeypress(r_paddle.up, "Up")

@@ -4,13 +4,13 @@ from turtle import Turtle
 class Paddle(Turtle):
     """Create paddle and its attributes."""
 
-    def __init__(self, position):
+    def __init__(self, position, color="#F46A00"):
         # Create paddle.
         super().__init__()
         self.shape("square")
         self.penup()
-        self.shapesize(stretch_wid=5, stretch_len=1)
-        self.color("DeepPink")
+        self.shapesize(stretch_wid=5, stretch_len=0.5)
+        self.color(color)
         self.goto(position)
 
     def up(self):
